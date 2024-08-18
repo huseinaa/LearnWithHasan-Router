@@ -45,7 +45,7 @@ apis = fetch_apis(filepath)
 
 user_query = input("Enter your inquiry: ")
 
-start_time = time.time() # Start timer
+start_time = time.time() # Start the timer
 
 result = find_best_api(user_query, apis)
 
