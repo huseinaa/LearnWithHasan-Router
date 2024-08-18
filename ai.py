@@ -11,7 +11,7 @@ def fetch_apis(filepath):
 def find_best_api(user_query, api_descriptions):
     llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name="gpt-4o-mini")
     u_prompt = f"""
-    You are an expert in problem solving. I have a user has a specific query and I want to check if I have an API
+    You are an expert in problem solving. I have a user specific query and I want to check if I have an API
     that would help him solve this problem. I'll give you both the user inquery and the list of APIs in the inputs
     section delimited between triple backticks. So analyze both of them very well and check if there's an API which
     can help him or no. 
