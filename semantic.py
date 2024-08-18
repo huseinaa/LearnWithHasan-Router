@@ -49,7 +49,7 @@ start_time = time.time() # Start timer
 
 result = find_best_api(user_query, apis)
 
-if result!=None:
+if result[1] > 0.3:
     print(f"The best API to use is: {result[0]["api"]}")
     print(f"Info about this result: {result}")
 else:
