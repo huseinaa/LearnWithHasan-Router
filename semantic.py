@@ -5,7 +5,7 @@ from SimplerVectors_core import VectorDatabase
 from SimplerLLM.tools.generic_loader import load_content
 from SimplerLLM.language.embeddings import EmbeddingsLLM, EmbeddingsProvider
 
-def read_api_descriptions(filepath):
+def fetch_apis(filepath):
     text_file = load_content(filepath)
     content = json.loads(text_file.content)
     return [(api['name'], api['description']) for api in content] 
@@ -41,7 +41,7 @@ def find_best_api(user_query, apis):
         return None
 
 filepath = 'apis.json'
-apis = read_api_descriptions(filepath)
+apis = fetch_apis(filepath)
 
 user_query = input("Enter your inquiry: ")
 
