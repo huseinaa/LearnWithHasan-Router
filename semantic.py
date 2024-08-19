@@ -40,9 +40,10 @@ def find_best_api(user_query, apis):
     else:
         return None
 
-filepath = 'apis.json'
-apis = fetch_apis(filepath)
+# Input:
+filepath = 'apis.json' 
 
+apis = fetch_apis(filepath)
 user_query = input("Enter your inquiry: ")
 
 start_time = time.time() # Start timer

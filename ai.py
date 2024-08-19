@@ -8,7 +8,7 @@ def fetch_apis(filepath):
     content = json.loads(text_file.content)
     return content
   
-def find_best_api(user_query, api_descriptions):
+def find_best_api(user_query, apis):
     llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name="gpt-4o-mini")
     u_prompt = f"""
     You are an expert in problem solving. I have a user specific query and I want to check if I have an API
@@ -18,7 +18,7 @@ def find_best_api(user_query, api_descriptions):
 
     ##Inputs
     user inquiry: ```[{user_query}]```
-    API list: ```[{api_descriptions}]```
+    API list: ```[{apis}]```
 
     #Output
     The output should only be the API name as provided in the inputs and nothing else. If no API was found return None.
@@ -27,14 +27,15 @@ def find_best_api(user_query, api_descriptions):
     response = llm_instance.generate_response(prompt=u_prompt)
     return response
 
+# Input:
 filepath = 'apis.json' 
-api_descriptions = fetch_apis(filepath)
 
+apis = fetch_apis(filepath)
 user_query = input("Enter your inquiry: ")
 
 start_time = time.time() # Start timer
 
-result = find_best_api(user_query, api_descriptions)
+result = find_best_api(user_query, apis)
     
 if result!="None":
     print(f"The best API to use is: {result}")
