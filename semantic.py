@@ -49,10 +49,11 @@ user_query = input("Enter your inquiry: ")
 start_time = time.time() # Start timer
 
 result = find_best_api(user_query, apis)
+cosine_similarity = result[1]
 
-if result[1] > 0.3:
-    print(f"The best API to use is: {result[0]["api"]}")
-    print(f"Info about this result: {result}")
+if cosine_similarity > 0.3:
+    print(f"\nThe best API to use is: {result[0]["api"]}\n")
+    print(f"Info about this result: {result}\n")
 else:
     print("No suitable API found.")
 
