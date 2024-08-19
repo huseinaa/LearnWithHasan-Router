@@ -34,8 +34,9 @@ def find_best_api(user_query, apis):
 
     query_embedding = db.normalize_vector(query_embedding[0])
     best_sim = db.top_cosine_similarity(query_embedding, top_n=1)
+    top_match = best_sim[0]
 
-    if best_sim:
+    if top_match[1] > 0.3:
         return best_sim[0]
     else:
         return None
@@ -49,13 +50,12 @@ user_query = input("Enter your inquiry: ")
 start_time = time.time() # Start timer
 
 result = find_best_api(user_query, apis)
-cosine_similarity = result[1]
 
-if cosine_similarity > 0.3:
+if result != None:
     print(f"\nThe best API to use is: {result[0]["api"]}\n")
     print(f"Info about this result: {result}\n")
 else:
-    print("No suitable API found.")
+    print("\nNo suitable API found.\n")
 
 end_time = time.time()  # End timer
 print(f"Execution time: {end_time - start_time} seconds")

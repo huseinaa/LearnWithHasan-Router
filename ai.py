@@ -40,7 +40,7 @@ result = find_best_api(user_query, apis)
 if result!="None":
     print(f"\nThe best API to use is: {result}\n")
 else:
-    print("No suitable API found.")
+    print("\nNo suitable API found.\n")
 
 end_time = time.time()  # End timer
 print(f"Execution time: {end_time - start_time} seconds")
